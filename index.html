@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zamarthé | Beauty & Style</title>
+    <title>Zamarthé | Skincare & Haircare</title>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/favicon.jpg" type="image/jpeg">
 
     <!-- FUENTES -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
@@ -14,15 +15,15 @@
 <body>
 
     <!-- NAVBAR -->
-    <header>
+    <header id="top">
         <nav class="navbar">
             <h1 class="logo">Zamarthé</h1>
 
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#services">Servicios</a></li>
+                <li><a href="#top">Inicio</a></li>
+                <li><a href="#philosophy">Esencia</a></li>
                 <li><a href="#products">Productos</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -30,48 +31,20 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
-            <h2>Elegancia que resalta tu esencia</h2>
-            <p>Beauty & Style exclusivo para ti</p>
-            <button onclick="scrollToSection()">Descubrir</button>
+            <h2>🪷 Korean & Indian Skincare</h2>
+            <p>✨ Glow natural · Ritual de belleza · Haircare premium</p>
+            <button id="discover-button" type="button">Descubrir</button>
         </div>
     </section>
 
-    <!-- SERVICIOS -->
-  <section class="products" id="products">
-    <h2>Nuestros Productos</h2>
-
-    <div class="product-grid">
-
-        <div class="product">
-            <img src="assets/pruieba.jpg" alt="">
-            <h3>Labial Matte</h3>
-            <p>$35.000</p>
-            <a href="https://wa.me/573001234567?text=Hola,%20quiero%20comprar%20el%20Labial%20Matte%20de%20Zamarthé" target="_blank" class="btn-wsp">Comprar</a>
-        </div>
-
-        <div class="product">
-            <img src="assets/producto2.jpg" alt="">
-            <h3>Kit de Brochas</h3>
-            <p>$80.000</p>
-            <a href="https://wa.me/573001234567?text=Hola,%20quiero%20comprar%20el%20Kit%20de%20Brochas%20de%20Zamarthé" target="_blank" class="btn-wsp">Comprar</a>
-        </div>
-
-        <div class="product">
-            <img src="assets/producto3.jpg" alt="">
-            <h3>Paleta de Sombras</h3>
-            <p>$65.000</p>
-            <a href="https://wa.me/573001234567?text=Hola,%20quiero%20comprar%20la%20Paleta%20de%20Sombras%20de%20Zamarthé" target="_blank" class="btn-wsp">Comprar</a>
-        </div>
-
-        <div class="product">
-            <img src="assets/producto4.jpg" alt="">
-            <h3>Crema Facial</h3>
-            <p>$50.000</p>
-            <a href="https://wa.me/573001234567?text=Hola,%20quiero%20comprar%20la%20Crema%20Facial%20de%20Zamarthé" target="_blank" class="btn-wsp">Comprar</a>
-        </div>
-
-    </div>
-</section>
+    <!-- FILOSOFÍA -->
+    <section class="philosophy" id="philosophy">
+        <h2>Nuestra Esencia</h2>
+        <p>
+            Inspirados en la belleza coreana e india, combinamos rituales ancestrales 
+            con innovación moderna para lograr una piel luminosa, saludable y natural.
+        </p>
+    </section>
 
     <!-- PRODUCTOS -->
     <section class="products" id="products">
@@ -80,42 +53,92 @@
         <div class="product-grid">
 
             <div class="product">
-                <img src="assets/pruieba.jpg" alt="">
-                <h3>Labial Matte</h3>
-                <p>$35.000</p>
-            </div>
-
-            <div class="product">
-                <img src="assets/producto2.jpg" alt="">
-                <h3>Kit de Brochas</h3>
-                <p>$80.000</p>
-            </div>
-
-            <div class="product">
-                <img src="assets/producto3.jpg" alt="">
-                <h3>Paleta de Sombras</h3>
+                <img src="assets/glowcoreano.jpg" alt="Serum Glow Coreano de Zamarthé">
+                <h3>Serum Glow Coreano</h3>
                 <p>$65.000</p>
+                <a href="https://wa.me/573168811895?text=Hola,%20quiero%20comprar%20el%20Serum%20Glow%20Coreano%20de%20Zamarthé" target="_blank" class="btn-wsp">Comprar</a>
             </div>
 
             <div class="product">
-                <img src="assets/producto4.jpg" alt="">
-                <h3>Crema Facial</h3>
+                <img src="assets/mascarillaarroz.jpg" alt="Mascarilla de Arroz de Zamarthé">
+                <h3>Mascarilla de Arroz</h3>
+                <p>$45.000</p>
+                <a href="https://wa.me/573168811895?text=Hola,%20quiero%20comprar%20la%20Mascarilla%20de%20Arroz%20de%20Zamarthé" target="_blank" class="btn-wsp">Comprar</a>
+            </div>
+
+            <div class="product">
+                <img src="assets/aceiteayurvedico.jpg" alt="Aceite Ayurvédico Capilar de Zamarthé">
+                <h3>Aceite Ayurvédico Capilar</h3>
+                <p>$70.000</p>
+                <a href="https://wa.me/573168811895?text=Hola,%20quiero%20comprar%20el%20Aceite%20Ayurvédico%20Capilar%20de%20Zamarthé" target="_blank" class="btn-wsp">Comprar</a>
+            </div>
+
+            <div class="product">
+                <img src="assets/tonicoiluminador.jpg" alt="Tónico Iluminador">
+                <h3>Tónico Iluminador</h3>
                 <p>$50.000</p>
+                <a href="https://wa.me/573168811895?text=Hola,%20quiero%20comprar%20el%20Tónico%20Iluminador%20de%20Zamarthé" target="_blank" class="btn-wsp">Comprar</a>
             </div>
 
         </div>
     </section>
+    
+    <section class="routine" id="routine">
+        <div class="routine-content">
+            <h2>Rutina de Belleza 🪷</h2>
+            <p>Un ritual simple y efectivo para cuidar tu piel y cabello con ingredientes suaves y resultados visibles.</p>
+            <div class="routine-grid">
+                <article class="routine-step">
+                    <span>1</span>
+                    <h3>Limpieza diaria</h3>
+                    <p>Retira impurezas con delicadeza para preparar la piel y el cabello.</p>
+                </article>
+                <article class="routine-step">
+                    <span>2</span>
+                    <h3>Nutrición profunda</h3>
+                    <p>Aplica serum, mascarilla o aceite para lograr hidratación intensa.</p>
+                </article>
+                <article class="routine-step">
+                    <span>3</span>
+                    <h3>Brillo natural</h3>
+                    <p>Sella la rutina con un tónico o aceite para un acabado luminoso.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <h2>¿Por qué Zamarthé?</h2>
+        <p class="intro">Descubre los beneficios de nuestros productos formulados para cuidar tu piel y cabello con una experiencia natural y elegante.</p>
+
+        <ul>
+        <li><strong>🌿 Ingredientes naturales</strong><br>Formulados con extractos puros y suaves</li>
+        <li><strong>🪷 Inspiración coreana e india</strong><br>Rituales ancestrales de belleza</li>
+        <li><strong>✨ Resultados visibles</strong><br>Piel luminosa desde las primeras semanas</li>
+        <li><strong>💖 Cuidado personalizado</strong><br>Productos pensados para tu tipo de piel</li>
+    </ul>
+</section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contact">
+        <h2>Contacto</h2>
+        <p>Escríbenos por WhatsApp para pedidos, consultas o asesoría personalizada.</p>
+        <a href="https://wa.me/573168811895?text=Hola,%20quiero%20información%20sobre%20Zamarthé" target="_blank" class="btn-wsp">Enviar mensaje</a>
+    </section>
+
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/573168811895?text=Hola,%20quiero%20información%20sobre%20Zamarthé" 
+       class="whatsapp-float" 
+       target="_blank" aria-label="WhatsApp Zamarthé">
+       💬
+    </a>
 
     <!-- FOOTER -->
     <footer>
-        <p>© 2026 Zamarthé - Beauty & Style</p>
+        <p>© 2026 Zamarthé · Korean & Indian Beauty</p>
+        <p>By Shara Ducuara Ortiz</p>
     </footer>
 
-    <script src="script.js"></script>
-    <a href="https://wa.me/573001234567?text=Hola,%20quiero%20información%20sobre%20Zamarthé" 
-   class="whatsapp-float" target="_blank">
-   💬
-</a>
-
+    <script src="script.js" defer></script>
 </body>
 </html>

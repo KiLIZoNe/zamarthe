@@ -1,4 +1,4 @@
-/* RESET */
+﻿/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +8,13 @@
 /* FUENTES */
 body {
     font-family: 'Poppins', sans-serif;
+    background: #fff;
+    color: #4f3a40;
+    line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* COLORES */
@@ -15,6 +22,7 @@ body {
     --rosa: #e8a0ad;
     --rosa-suave: #fde8ec;
     --texto: #5a3e45;
+    --texto-sec: #7a5c63;
 }
 
 /* NAVBAR */
@@ -41,6 +49,7 @@ body {
 .navbar a {
     text-decoration: none;
     color: #555;
+    transition: 0.3s;
 }
 
 .navbar a:hover {
@@ -51,13 +60,14 @@ body {
 .hero {
     height: 100vh;
     background:
-        linear-gradient(rgba(255,255,255,0.75), rgba(255,255,255,0.85)),
+        linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9)),
         url("assets/fondo.png") no-repeat center center/cover;
 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 20px;
 }
 
 .hero h2 {
@@ -67,7 +77,7 @@ body {
 
 .hero p {
     margin: 15px 0;
-    color: #7a5c63;
+    color: var(--texto-sec);
 }
 
 .hero button {
@@ -79,31 +89,32 @@ body {
     cursor: pointer;
 }
 
-/* SERVICIOS */
-.services {
+.hero button:hover {
+    background: #d88998;
+}
+
+/* FILOSOFÃA */
+.philosophy {
     padding: 60px 20px;
     text-align: center;
-    background: var(--rosa-suave);
 }
 
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+.philosophy h2 {
+    color: var(--texto);
+    margin-bottom: 20px;
 }
 
-.card {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    width: 250px;
+.philosophy p {
+    max-width: 600px;
+    margin: auto;
+    color: var(--texto-sec);
 }
 
 /* PRODUCTOS */
 .products {
     padding: 70px 20px;
     text-align: center;
+    background: var(--rosa-suave);
 }
 
 .products h2 {
@@ -120,9 +131,14 @@ body {
 }
 
 .product {
-    background: var(--rosa-suave);
+    background: white;
     padding: 15px;
     border-radius: 15px;
+    transition: 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
 }
 
 .product img {
@@ -140,13 +156,7 @@ body {
     font-weight: bold;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: white;
-    color: #777;
-}
+/* BOTÃ“N WHATSAPP PRODUCTO */
 .btn-wsp {
     display: inline-block;
     margin-top: 10px;
@@ -156,12 +166,13 @@ footer {
     text-decoration: none;
     border-radius: 20px;
     font-size: 14px;
-    transition: 0.3s;
 }
 
 .btn-wsp:hover {
     background: #1ebe5d;
 }
+
+/* BOTÓN FLOTANTE */
 .whatsapp-float {
     position: fixed;
     bottom: 20px;
@@ -172,4 +183,190 @@ footer {
     padding: 15px;
     border-radius: 50%;
     text-decoration: none;
+    z-index: 1000;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+}
+
+.routine {
+    padding: 70px 20px;
+    text-align: center;
+    background: linear-gradient(180deg, #fff, #fff7f9);
+}
+
+.routine h2 {
+    font-size: 36px;
+    color: var(--texto);
+    font-family: 'Playfair Display', serif;
+    margin: 0 auto 20px;
+    max-width: 720px;
+}
+
+.routine p {
+    max-width: 620px;
+    margin: 0 auto 35px;
+    color: var(--texto-sec);
+}
+
+.routine-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
+    gap: 20px;
+    max-width: 1080px;
+    margin: auto;
+}
+
+.routine-step {
+    background: white;
+    border-radius: 24px;
+    padding: 30px 22px;
+    box-shadow: 0 16px 35px rgba(232, 160, 173, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.routine-step:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 45px rgba(232, 160, 173, 0.16);
+}
+
+.routine-step span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--rosa);
+    color: white;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.routine-step h3 {
+    margin: 0 0 10px;
+    color: var(--texto);
+}
+
+.routine-step p {
+    margin: 0;
+    color: var(--texto-sec);
+}
+
+.contact {
+    padding: 70px 20px;
+    text-align: center;
+    background: #fff;
+}
+
+.contact h2 {
+    margin-bottom: 20px;
+    color: var(--texto);
+}
+
+.contact p {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    color: var(--texto-sec);
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-wrap: wrap;
+        padding: 20px 25px;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    .hero {
+        height: auto;
+        padding: 60px 20px;
+    }
+
+    .hero h2 {
+        font-size: 34px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: white;
+    color: #777;
+}
+
+/* BENEFITS SECTION */
+.benefits {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, #fff, #fde8ec);
+}
+
+.benefits h2 {
+    font-size: 34px;
+    margin-bottom: 40px;
+    color: #5a3e45;
+    font-family: "Playfair Display", serif;
+    letter-spacing: 0.03em;
+}
+
+.benefits .intro {
+    max-width: 640px;
+    margin: 0 auto 40px;
+    color: #7a5c63;
+    font-size: 16px;
+}
+
+/* GRID */
+.benefits ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 900px;
+    margin: auto;
+    list-style: none;
+    padding: 0;
+}
+
+/* CARDS */
+.benefits li {
+    background: linear-gradient(180deg, #ffffff 0%, #fff6f8 100%);
+    padding: 30px 25px;
+    border-radius: 24px;
+    font-size: 16px;
+    color: #7a5c63;
+    border: 1px solid rgba(232, 160, 173, 0.18);
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 12px 30px rgba(232, 160, 173, 0.14);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* EFECTO HOVER */
+.benefits li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 38px rgba(232, 160, 173, 0.22);
+}
+
+.benefits li strong {
+    display: block;
+    color: #5a3e45;
+    font-size: 18px;
+}
+
+/* EMOJIS MÁS GRANDES */
+.benefits li::first-letter {
+    font-size: 24px;
 }
