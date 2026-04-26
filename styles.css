@@ -25,19 +25,27 @@ html {
     --texto-sec: #7a5c63;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR PREMIUM 💎 ================= */
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 20px 50px;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    align-items: center;
+    padding: 15px 50px;
+
+    background: linear-gradient(90deg, #ffffff, #fde8ec, #ffffff);
+
+    box-shadow: 0 4px 20px rgba(232, 160, 173, 0.15);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
     font-family: 'Playfair Display', serif;
     font-size: 28px;
     color: var(--rosa);
+    letter-spacing: 1px;
 }
 
 .navbar ul {
@@ -48,15 +56,33 @@ html {
 
 .navbar a {
     text-decoration: none;
-    color: #555;
+    color: #5a3e45;
+    font-weight: 500;
+    position: relative;
     transition: 0.3s;
+}
+
+/* Línea animada */
+.navbar a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--rosa);
+    transition: 0.3s;
+}
+
+.navbar a:hover::after {
+    width: 100%;
 }
 
 .navbar a:hover {
     color: var(--rosa);
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
     height: 100vh;
     background:
@@ -93,7 +119,7 @@ html {
     background: #d88998;
 }
 
-/* FILOSOFÃA */
+/* ================= FILOSOFÍA ================= */
 .philosophy {
     padding: 60px 20px;
     text-align: center;
@@ -110,7 +136,7 @@ html {
     color: var(--texto-sec);
 }
 
-/* PRODUCTOS */
+/* ================= PRODUCTOS ================= */
 .products {
     padding: 70px 20px;
     text-align: center;
@@ -156,7 +182,7 @@ html {
     font-weight: bold;
 }
 
-/* BOTÃ“N WHATSAPP PRODUCTO */
+/* ================= BOTONES ================= */
 .btn-wsp {
     display: inline-block;
     margin-top: 10px;
@@ -172,7 +198,6 @@ html {
     background: #1ebe5d;
 }
 
-/* BOTÓN FLOTANTE */
 .whatsapp-float {
     position: fixed;
     bottom: 20px;
@@ -187,59 +212,68 @@ html {
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
 }
 
+/* ================= RUTINA ================= */
 .routine {
     padding: 70px 20px;
     text-align: center;
-    background: linear-gradient(180deg, #fff, #fff7f9);
+    background: linear-gradient(180deg, #fff, #fff7f8);
+}
+
+.routine-content {
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .routine h2 {
-    font-size: 36px;
+    font-size: 38px;
     color: var(--texto);
     font-family: 'Playfair Display', serif;
-    margin: 0 auto 20px;
-    max-width: 720px;
+    margin-bottom: 18px;
 }
 
 .routine p {
-    max-width: 620px;
+    max-width: 640px;
     margin: 0 auto 35px;
     color: var(--texto-sec);
+    font-size: 17px;
+    line-height: 1.7;
 }
 
 .routine-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(180px, 1fr));
-    gap: 20px;
-    max-width: 1080px;
-    margin: auto;
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    gap: 24px;
 }
 
 .routine-step {
     background: white;
+    padding: 28px 24px;
     border-radius: 24px;
-    padding: 30px 22px;
-    box-shadow: 0 16px 35px rgba(232, 160, 173, 0.12);
+    box-shadow: 0 16px 35px rgba(232, 160, 173, 0.14);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .routine-step:hover {
     transform: translateY(-6px);
-    box-shadow: 0 22px 45px rgba(232, 160, 173, 0.16);
+    box-shadow: 0 22px 45px rgba(232, 160, 173, 0.18);
 }
 
 .routine-step span {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    background: var(--rosa);
+    background: linear-gradient(135deg, #e8a0ad, #f9d4db);
     color: white;
     font-weight: 700;
     margin-bottom: 18px;
+    font-size: 1rem;
 }
 
 .routine-step h3 {
@@ -250,12 +284,63 @@ html {
 .routine-step p {
     margin: 0;
     color: var(--texto-sec);
+    line-height: 1.75;
 }
 
+/* ================= BENEFITS ================= */
+.benefits {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, #fff, #fde8ec);
+}
+
+.benefits h2 {
+    font-size: 34px;
+    margin-bottom: 20px;
+    color: var(--texto);
+    font-family: "Playfair Display", serif;
+}
+
+.benefits .intro {
+    max-width: 620px;
+    margin: 0 auto 40px;
+    color: var(--texto-sec);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.benefits ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 900px;
+    margin: auto;
+    list-style: none;
+}
+
+.benefits li {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    color: var(--texto-sec);
+    box-shadow: 0 12px 30px rgba(232, 160, 173, 0.14);
+    transition: 0.3s;
+}
+
+.benefits li:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 38px rgba(232, 160, 173, 0.22);
+}
+
+/* ================= CONTACTO ================= */
 .contact {
     padding: 70px 20px;
     text-align: center;
     background: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 .contact h2 {
@@ -264,11 +349,34 @@ html {
 }
 
 .contact p {
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto 20px;
     color: var(--texto-sec);
+    line-height: 1.8;
 }
 
+.contact .btn-wsp {
+    margin-top: 16px;
+}
+
+
+/* ================= FOOTER ================= */
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background: white;
+    color: #777;
+}
+
+footer p {
+    margin: 4px 0;
+}
+
+/* ================= RESPONSIVE ================= */
 @media (max-width: 800px) {
     .navbar {
         flex-wrap: wrap;
@@ -294,79 +402,8 @@ html {
     .product-grid {
         grid-template-columns: 1fr;
     }
-}
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: white;
-    color: #777;
-}
-
-/* BENEFITS SECTION */
-.benefits {
-    padding: 80px 20px;
-    text-align: center;
-    background: linear-gradient(to bottom, #fff, #fde8ec);
-}
-
-.benefits h2 {
-    font-size: 34px;
-    margin-bottom: 40px;
-    color: #5a3e45;
-    font-family: "Playfair Display", serif;
-    letter-spacing: 0.03em;
-}
-
-.benefits .intro {
-    max-width: 640px;
-    margin: 0 auto 40px;
-    color: #7a5c63;
-    font-size: 16px;
-}
-
-/* GRID */
-.benefits ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-    max-width: 900px;
-    margin: auto;
-    list-style: none;
-    padding: 0;
-}
-
-/* CARDS */
-.benefits li {
-    background: linear-gradient(180deg, #ffffff 0%, #fff6f8 100%);
-    padding: 30px 25px;
-    border-radius: 24px;
-    font-size: 16px;
-    color: #7a5c63;
-    border: 1px solid rgba(232, 160, 173, 0.18);
-    min-height: 190px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    box-shadow: 0 12px 30px rgba(232, 160, 173, 0.14);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* EFECTO HOVER */
-.benefits li:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 18px 38px rgba(232, 160, 173, 0.22);
-}
-
-.benefits li strong {
-    display: block;
-    color: #5a3e45;
-    font-size: 18px;
-}
-
-/* EMOJIS MÁS GRANDES */
-.benefits li::first-letter {
-    font-size: 24px;
+    .routine-grid {
+        grid-template-columns: 1fr;
+    }
 }
