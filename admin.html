@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Zamarthe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Zamarthe Admin</div>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+        </ul>
+    </nav>
+
+    <main class="admin">
+        <!-- LOGIN -->
+        <section class="admin-card" id="login-card">
+            <h2>Iniciar sesión</h2>
+            <form id="login-form">
+                <input id="admin-email" type="email" placeholder="Correo" required>
+                <input id="admin-password" type="password" placeholder="Contraseña" required>
+                <button type="submit" class="btn-wsp">Ingresar</button>
+            </form>
+            <p id="login-message"></p>
+        </section>
+
+        <!-- PANEL -->
+        <section class="admin-card hidden" id="admin-panel">
+
+            <button id="logout-button" class="btn-wsp">Cerrar sesión</button>
+
+            <!-- DASHBOARD -->
+            <div class="dashboard-metrics">
+                <div class="metric-card">
+                    <h4>Productos</h4>
+                    <p id="total-productos">0</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Stock</h4>
+                    <p id="total-stock">0</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Vendidos</h4>
+                    <p id="total-vendidos">0</p>
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <form id="producto-form">
+                <input id="producto-id" type="hidden">
+
+                <input id="producto-nombre" placeholder="Nombre" required>
+                <input id="producto-precio" type="number" placeholder="Precio" required>
+                <input id="producto-stock" type="number" placeholder="Stock" required>
+
+                <select id="producto-categoria" required>
+                    <option value="">Selecciona categoría</option>
+                </select>
+
+                <input id="imagen" type="file" accept="image/*" required>
+                <input id="producto-whatsapp" placeholder="WhatsApp" required>
+
+                <button type="submit" class="btn-wsp">Guardar</button>
+            </form>
+
+            <!-- LISTA -->
+            <div id="productos-panel-container"></div>
+
+            <div class="admin-card">
+        <h3>Gestión de Categorías</h3>
+
+          <form id="categoria-form">
+        <input type="text" id="categoria-nombre" placeholder="Nueva categoría" required>
+        <button type="submit" class="btn-wsp">Agregar</button>
+          </form>
+
+    <div id="categorias-list"></div>
+</div>
+
+
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>
