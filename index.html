@@ -24,8 +24,9 @@
                 <li><a href="#philosophy">Esencia</a></li>
                 <li><a href="#products">Productos</a></li>
                 <li><a href="#contact">Contacto</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
+            <li><button id="cart-toggle" class="btn-wsp navbar-cart">Carrito (<span id="cart-count">0</span>)</button></li>
+            <li><a href="admin.html">Admin</a></li>
+        </ul>
         </nav>
     </header>
 
@@ -51,11 +52,53 @@
     <section class="products" id="products">
         <h2>Nuestros Productos</h2>
 
-        <div id="categorias-container" class="categorias-container"></div>
+        <div class="filtros-bar">
+            <input type="text" id="search-input" placeholder="🔍 Buscar productos...">
+
+            <select id="filtro-categoria">
+                <option value="">Todas las categorías</option>
+            </select>
+
+            <div class="precio-range">
+                <input type="number" id="precio-min" placeholder="Min" min="0">
+                <span>-</span>
+                <input type="number" id="precio-max" placeholder="Max" min="0">
+            </div>
+
+            <select id="ordenar">
+                <option value="">Ordenar</option>
+                <option value="precio-asc">Precio ↑</option>
+                <option value="precio-desc">Precio ↓</option>
+                <option value="vendidos">🔥 Más vendidos</option>
+            </select>
+
+            <button type="button" id="reset-filtros" class="btn-clear">Limpiar</button>
+        </div>
 
         <div id="productos-container" class="product-grid"></div>
         <p id="product-message" class="product-message"></p>
+
+        <section class="trust">
+            <p>✔ Pago seguro</p>
+            <p>🚚 Envíos a todo Colombia</p>
+            <p>💬 Atención personalizada</p>
+        </section>
     </section>
+
+    <div id="cart-overlay" class="cart-overlay"></div>
+    <div id="cart-panel" class="cart-panel">
+        <div class="cart-panel-content">
+            <button id="cart-close" class="cart-close" aria-label="Cerrar carrito">×</button>
+            <h2>Carrito de compras</h2>
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-summary">
+                <p>Total: <span id="cart-total">$0</span></p>
+                <button id="checkout-button" class="btn-wsp">Finalizar compra</button>
+            </div>
+            <p id="cart-message" class="cart-message"></p>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
     
     <section class="routine" id="routine">
         <div class="routine-content">

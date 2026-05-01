@@ -45,6 +45,10 @@
                     <h4>Vendidos</h4>
                     <p id="total-vendidos">0</p>
                 </div>
+                <div class="metric-card">
+                    <h4>Ingresos</h4>
+                    <p id="total-ingresos">$0</p>
+                </div>
             </div>
 
             <!-- FORM -->
@@ -59,7 +63,8 @@
                     <option value="">Selecciona categoría</option>
                 </select>
 
-                <input id="imagen" type="file" accept="image/*" required>
+                <input id="imagen" type="file" accept="image/*">
+                <img id="preview-img" style="width:120px; border-radius:10px; margin-top:10px; display:none;">
                 <input id="producto-whatsapp" placeholder="WhatsApp" required>
 
                 <button type="submit" class="btn-wsp">Guardar</button>
@@ -67,6 +72,11 @@
 
             <!-- LISTA -->
             <div id="productos-panel-container"></div>
+
+            <div class="admin-card">
+                <h3>Gestión de Pedidos</h3>
+                <div id="pedidos-list"></div>
+            </div>
 
             <div class="admin-card">
         <h3>Gestión de Categorías</h3>
