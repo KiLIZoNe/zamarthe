@@ -6,6 +6,10 @@ let productosGlobal = [];
 let categoriasGlobal = [];
 let pedidosGlobal = [];
 
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 function showLoginMessage(message, isError = true) {
     const loginMessage = document.getElementById("login-message");
     if (!loginMessage) return;
@@ -78,14 +82,39 @@ function validateProductForm({ nombre, precio, stock, categoria_id, whatsapp }) 
     return "";
 }
 
-function restoreSession() {
-    const token = localStorage.getItem("token");
-    if (token) {
-        authToken = token;
+async function restoreSession() {
+    const { data } = await supabase.auth.getSession();
+
+    if (data.session) {
+        authToken = data.session.access_token;
+
+        document.getElementById("login-card").classList.add("hidden");
+        document.getElementById("admin-panel").classList.remove("hidden");
+
+        iniciarAdmin();
+    }
+}
+async function iniciarAdmin() {
+    try {
+        productosGlobal = await cargarProductos();
+        categoriasGlobal = await cargarCategorias();
+        pedidosGlobal = await cargarPedidos();
+
+        mostrarProductos(productosGlobal);
+        mostrarCategorias(categoriasGlobal);
+        mostrarPedidos(pedidosGlobal);
+
+        populateCategoriaSelect();
+        actualizarDashboard(productosGlobal);
+
+    } catch (error) {
+        console.error(error);
+        alert("Error cargando datos del admin");
     }
 }
 
-function logoutAdmin() {
+async function logoutAdmin() {
+    await supabase.auth.signOut();
     localStorage.removeItem("token");
     authToken = null;
     window.location.reload();
@@ -698,3 +727,40 @@ document.addEventListener("DOMContentLoaded", () => {
         initAdminPanel();
     }
 });
+
+document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("admin-email").value;
+    const password = document.getElementById("admin-password").value;
+
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email,
+            password
+        });
+
+        if (error) throw error;
+
+        // 🔥 guardar token
+        authToken = data.session.access_token;
+        localStorage.setItem("token", authToken);
+
+        // 🔥 mostrar panel
+        document.getElementById("login-card").classList.add("hidden");
+        document.getElementById("admin-panel").classList.remove("hidden");
+
+        iniciarAdmin(); // 👈 carga datos
+
+    } catch (err) {
+        showLoginMessage(err.message);
+    }
+});
+
+window.actualizarCategoria = actualizarCategoria;
+window.eliminarCategoria = eliminarCategoria;
+window.actualizarEstadoPedido = actualizarEstadoPedido;
+window.eliminarPedido = eliminarPedido;
+window.editarProducto = editarProducto;
+window.eliminarProducto = eliminarProducto;
+window.togglePedidoDetalle = togglePedidoDetalle;

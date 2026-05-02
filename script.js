@@ -163,89 +163,40 @@ async function procesarCompra() {
         return false;
     }
 
-    const total = cart.reduce((sum, item) => {
-        return sum + Number(item.precio || 0) * Number(item.cantidad || 0);
-    }, 0);
-
-    for (const item of cart) {
-        const producto = productosGlobal.find(p => String(p.id) === String(item.id));
-        if (!producto) {
-            showToast(`No se encontró el producto ${item.nombre}.`);
-            return false;
-        }
-
-        const cantidad = Number(item.cantidad || 0);
-        if (Number.isNaN(cantidad) || cantidad < 1) {
-            showToast(`Cantidad inválida para ${item.nombre}.`);
-            return false;
-        }
-
-        if (Number(producto.stock || 0) < cantidad) {
-            showToast(`Stock insuficiente para ${item.nombre}`);
-            return false;
-        }
-    }
-
     setCheckoutLoading(true);
+
     try {
-        const pedidoResponse = await fetch(`${SUPABASE_URL}/rest/v1/pedidos`, {
-            method: "POST",
-            headers: {
-                apikey: SUPABASE_KEY,
-                Authorization: `Bearer ${SUPABASE_KEY}`,
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            },
-            body: JSON.stringify({
-                total,
-                estado: "pendiente",
-                items: cart
-            })
-        });
+     const pedidoResponse = await fetch(
+  "https://ygttxszksmgqzzaifnlg.supabase.co/functions/v1/procesar-pedido",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_KEY,              // 🔥 OBLIGATORIO
+      "Authorization": `Bearer ${SUPABASE_KEY}` // 🔥 MUY IMPORTANTE
+    },
+    body: JSON.stringify({
+      items: cart
+    })
+  }
+);
 
         if (!pedidoResponse.ok) {
-            const errorText = await pedidoResponse.text();
-            throw new Error(`No se pudo crear el pedido: ${pedidoResponse.status} ${errorText}`);
+             const error = await pedidoResponse.json();
+                console.error("ERROR BACKEND:", error); // 🔥 ESTA LÍNEA NUEVA
+              throw new Error(error.detail || error.error || "Error al crear pedido");
         }
 
-        for (const item of cart) {
-            const producto = productosGlobal.find(p => String(p.id) === String(item.id));
-            if (!producto) continue;
-
-            const cantidad = Number(item.cantidad || 0);
-            const nuevoStock = Number(producto.stock || 0) - cantidad;
-            const nuevosVendidos = Number(producto.vendidos || 0) + cantidad;
-
-            const stockResponse = await fetch(`${SUPABASE_URL}/rest/v1/productos?id=eq.${item.id}`, {
-                method: "PATCH",
-                headers: {
-                    apikey: SUPABASE_KEY,
-                    Authorization: `Bearer ${SUPABASE_KEY}`,
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: JSON.stringify({
-                    stock: nuevoStock,
-                    vendidos: nuevosVendidos
-                })
-            });
-
-            if (!stockResponse.ok) {
-                const errorText = await stockResponse.text();
-                throw new Error(`No se pudo actualizar stock de ${item.nombre}: ${stockResponse.status} ${errorText}`);
-            }
-
-            producto.stock = nuevoStock;
-            producto.vendidos = nuevosVendidos;
-        }
-
+        // 🔥 YA NO HAY FOR NI STOCK UPDATE
         clearCart();
         actualizarVistaProductos();
+
         showCartMessage("Compra realizada con éxito", false);
         return true;
+
     } catch (error) {
         console.error(error);
-        showToast(`Error al procesar la compra. ${error.message || "Intenta de nuevo más tarde."}`);
+        showToast(`Error: ${error.message}`);
         return false;
     } finally {
         setCheckoutLoading(false);
@@ -485,12 +436,11 @@ function mostrarProductosWeb(productos) {
 
 async function cargarCategorias() {
     const response = await fetch(`${SUPABASE_URL}/rest/v1/categorias?select=id,nombre`, {
-        headers: {
-            apikey: SUPABASE_KEY,
-            Authorization: `Bearer ${SUPABASE_KEY}`,
-            Accept: "application/json"
-        }
-    });
+    headers: {
+        apikey: SUPABASE_KEY,
+        Accept: "application/json"
+    }
+});
 
     if (!response.ok) {
         throw new Error(`Error cargando categorías: ${response.status}`);
@@ -501,12 +451,11 @@ async function cargarCategorias() {
 
 async function cargarProductos() {
     const response = await fetch(`${SUPABASE_URL}/rest/v1/productos?select=id,nombre,precio,stock,vendidos,categoria_id,whatsapp,imagen`, {
-        headers: {
-            apikey: SUPABASE_KEY,
-            Authorization: `Bearer ${SUPABASE_KEY}`,
-            Accept: "application/json"
-        }
-    });
+    headers: {
+        apikey: SUPABASE_KEY,
+        Accept: "application/json"
+    }
+});
 
     if (!response.ok) {
         throw new Error(`Error cargando productos: ${response.status}`);
